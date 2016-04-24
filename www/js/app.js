@@ -25,7 +25,7 @@ angular.module('starter', ['ionic'])
 
 
 
-.controller('AppCtrl',function($scope) {
+.controller('AppCtrl',function($scope, $ionicPopup) {
   $scope.msg = 'App Ctrl';
   console.log($scope.msg);
   //home
@@ -36,7 +36,28 @@ angular.module('starter', ['ionic'])
   $scope.model;
 
   //questions
-  $scope.questions = ["Quel est le sens de la vie ?", "Quelle est la différence entre un pigeon ?", "Combien faut-il de nain pour creuser en 2 jours un tunnel de 28m dans du granit ?"];
+  $scope.questions = [{title: "Quel est le sens de la vie ?",
+                       vote: 0,
+                       show: false,
+                       reponses: ["la réponse 1", "la réponse 2"] },
+                      {title: "Quelle est la différence entre un pigeon ?",
+                       vote: 0,
+                       show: false}, 
+                      {title: "Combien faut-il de nain pour creuser en 2 jours un tunnel de 28m dans du granit ?",
+                       vote: 0,
+                       show: false}
+                    ];
+  $scope.addAnswer = function(i){
+    $ionicPopup.prompt({
+            title: 'Réponse ?',
+            inputType: 'text'    
+        })
+        .then(function(result) {
+          var j = $scope.questions.indexOf(i);
+          console.log(j);
+          $scope.questions[j].reponses.push(result);
+        });
+  }
 })
 
 

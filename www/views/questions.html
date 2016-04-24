@@ -1,13 +1,23 @@
 <ion-view view-title="Question">
 	<ion-content>
-		<div class="card" ng-repeat="x in questions">
+		<div class="card" ng-repeat="x in questions | orderBy:'-vote'">
 			<div class="item item-divider">
-    			{{x}}
-  			</div>
-  			<a href="#" class="item item-icon-left">
-  			  <i class="icon ion-home"></i>
-  			  {{x}}
-  			</a>
+    		Question
+        <span class="badge badge-dark">{{x.vote}}</span>
+        <a class="ion ion-plus" ng-click="x.vote = x.vote+1" href=""></a>
   		</div>
+  		<a class="item item-icon-left" ng-click="addAnswer(x)">
+  		  <i class="icon ion-search"></i>
+  		  {{x.title}}
+  		</a>
+      <a class="item item-divider" ng-click="x.show = !x.show">
+        Voir les réponses
+        <i class="icon ion-chevron-down"></i>
+        <span class="badge badge-dark">{{x.reponses.length}}</span>
+      </a>
+      <div class="item" ng-repeat="y in x.reponses" ng-show="x.show">
+        {{y}}
+      </div>
+  	</div>
 	</ion-content>
 </ion-view>
