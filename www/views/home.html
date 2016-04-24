@@ -1,0 +1,30 @@
+<ion-view view-tile="Home">
+	<ion-content>
+		<br />
+		<div class="card">
+  			<div class="item item-divider">
+    			Matière
+  			</div>
+  			<div class="item item-text-wrap item-select">
+  				Choisissez une matière :
+    			<select>
+      				<option ng-repeat="x in matiere">{{x}}</option>
+    			</select>
+  			</div>
+  		</div>
+  		<div class="card">
+  			<div class="item item-divider">
+    			Cours
+  			</div>
+  			<div class="item item-text-wrap item-select">
+  				Choisissez un cours :
+    			<select>
+      				<option ng-repeat="x in cours">{{x}}</option>
+    			</select>
+  			</div>
+  		</div>
+  		<div class="padding">
+  			<a class="button button-block button-balanced" ng-href="#/editeur">Prise de notes</a>
+  		</div>
+	</ion-content>
+</ion-view>
